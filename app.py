@@ -8,7 +8,7 @@ def get_sbir():
     # 這裡我先幫你放數位發展部的真實 JSON 當測試
     # 換成台北市產業發展獎勵補助 API
     # 換成台北市產業發展獎勵補助 API
-    target_url = "https://data.taipei/api/v1/dataset/5012e8ba-5ace-4821-8482-ee07c147fd0a?scope=resourceAquire"
+    target_url = "https://od.moda.gov.tw/ODA/20230206100122/45c71c40-3c2f-4c8d-b08e-5b6eb93466f2/OD/OD-001.json"
     
     headers = {
         "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) Chrome/120.0.0.0 Safari/537.36"
