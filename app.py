@@ -1,27 +1,14 @@
+import json
 from flask import Flask, jsonify
-import requests
 
 app = Flask(__name__)
 
 @app.route('/get-sbir')
 def get_sbir():
-    # 這裡我先幫你放數位發展部的真實 JSON 當測試
-    # 換成台北市產業發展獎勵補助 API
-    # 換成台北市產業發展獎勵補助 API
-    target_url = "https://od.moda.gov.tw/ODA/20230206100122/45c71c40-3c2f-4c8d-b08e-5b6eb93466f2/OD/OD-001.json"
-    
-    headers = {
-        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) Chrome/120.0.0.0 Safari/537.36"
-    }
-    
-    try:
-        response = requests.get(target_url, headers=headers, verify=False)
-        data = response.json()
-        return jsonify({"status": "success", "data": data})
-    except Exception as e:
-        return jsonify({"status": "error", "message": str(e)})
+    # 讀取 GitHub 上的 data.json 檔案
+    with open('data.json', 'r', encoding='utf-8') as f:
+        data = json.load(f)
+    return jsonify({"status": "success", "data": data})
 
-# 注意這裡 __name__ 和 __main__ 前後都是「兩個底線」
 if __name__ == '__main__':
-    print("====== 準備啟動伺服器囉！ ======")
-    app.run(debug=True, port=5000)
+    app.run()
